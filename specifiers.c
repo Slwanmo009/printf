@@ -6,7 +6,7 @@
  */
 int (*get_specifier(char *s))(va_list ap, params_t *params)
 {
-	specifier_t specifiers[] = {
+	specifier_t specifier[] = {
 		{"c", print_char},
 		{"d", print_int},
 		{"i", print_int},
@@ -16,11 +16,11 @@ int (*get_specifier(char *s))(va_list ap, params_t *params)
 	};
 	int i = 0;
 
-	while (specifiers[i].specifiers)
+	while (specifier[i].specifier)
 	{
-		if (*s == specifiers[i].specifiers[0])
+		if (*s == specifier[i].specifier[0])
 		{
-			return (specifiers[i].f);
+			return (specifier[i].f);
 		}
 		i++;
 	}
@@ -33,7 +33,7 @@ int (*get_specifier(char *s))(va_list ap, params_t *params)
  * @params: the paramters struct
  * Return: the number of bytes
  */
-get_print_func(char *s, va_list ap, params_t *params)
+int get_print_func(char *s, va_list ap, params_t *params)
 {
 	int (*f)(va_list, params_t *) = get_specifier(s);
 

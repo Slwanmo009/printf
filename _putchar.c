@@ -18,7 +18,7 @@ int _puts(char *str)
  * Return: on success 1.
  * on error, -1
  */
-int  _putchar(int c)
+int _putchar(int c)
 {
 	static int i;
 	static  char buf[OUTPUT_BUF_SIZE];
