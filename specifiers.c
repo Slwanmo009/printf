@@ -6,7 +6,7 @@
  */
 int (*get_specifier(char *s))(va_list ap, params_t *params)
 {
-	specifier_t specifier[] = {
+	specifier_t specifiers[] = {
 		{"c", print_char},
 		{"d", print_int},
 		{"i", print_int},
@@ -16,11 +16,11 @@ int (*get_specifier(char *s))(va_list ap, params_t *params)
 	};
 	int i = 0;
 
-	while (specifier[i].specifier)
+	while (specifiers[i].specifier)
 	{
-		if (*s == specifier[i].specifier[0])
+		if (*s == specifiers[i].specifier[0])
 		{
-			return (specifier[i].f);
+			return (specifiers[i].f);
 		}
 		i++;
 	}
@@ -61,6 +61,9 @@ int get_flag(char *s, params_t *params)
 		break;
 		case '#':
 		i = params->hashtag_flag = 1;
+		break;
+		case '-':
+		i = params->minus_flag = 1;
 		break;
 		case '0':
 		i = params->zero_flag = 1;

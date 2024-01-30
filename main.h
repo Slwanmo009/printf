@@ -29,9 +29,9 @@ typedef struct parameters
 
 	unsigned int width;
 	unsigned int precision;
-
-	unsigned int h_modifier;
-	unsigned int l_modifier;
+	
+	unsigned int h_modifier     : 1;
+	unsigned int l_modifier     : 1;
 } params_t;
 typedef struct specifier
 {
@@ -56,16 +56,14 @@ int get_modifier(char *s, params_t *params);
 char *get_width(char *s, params_t *params, va_list ap);
 
 
-
 int print_hex(va_list ap, params_t *params);
 int print_HEX(va_list ap, params_t *params);
 int print_from_to(char *start, char *stop, char *except);
 int _isdigit(int c);
-int print_number(char *str, params_t *params);
 int _strlen(char *s);
-void  init_params(params_t *params, va_list ap);
+int print_number(char *str, params_t *params);
+void init_params(params_t *params, va_list ap);
 char *get_precision(char *p, params_t *params, va_list ap);
-
 
 int _printf(const char *format, ...);
 #endif
