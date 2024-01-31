@@ -17,7 +17,19 @@
 #define CONVERT_LOWERCASE   1
 #define CONVERT_UNSIGNED    2
 
-
+/**
+ * struct parameters - paramter struct
+ * @unsign: flag if unsign value
+ * @plus_flag: on if plus_flag specifier
+ * @space_flag: on if space_flag specifier
+ * @hashtag_flag: on if hashtag_flag specifier
+ * @zero_flag: on if zero_flag specifier
+ * @minus_flag: on if minus_flag specifier
+ * @width: filed width specifierd
+ * @precision: filed precision specifier
+ * @h_modifier: on if h_modifier specifier
+ * @l_modifier: on if l_modifier specifier
+ */
 typedef struct parameters
 {
 	unsigned int unsign         : 1;
@@ -29,10 +41,14 @@ typedef struct parameters
 
 	unsigned int width;
 	unsigned int precision;
-	
 	unsigned int h_modifier     : 1;
 	unsigned int l_modifier     : 1;
 } params_t;
+/**
+ * struct specifier - struct token
+ * @specifier: format token
+ * @f: the function associatted
+ */
 typedef struct specifier
 {
 	char *specifier;
@@ -71,5 +87,5 @@ int print_number_left_shift(char *str, params_t *params);
 void init_params(params_t *params, va_list ap);
 char *get_precision(char *p, params_t *params, va_list ap);
 
-int _printf(const char *format, ...);	
+int _printf(const char *format, ...);
 #endif
