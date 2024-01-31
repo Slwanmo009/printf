@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * _printf - prints anything
  * @format: the format string
@@ -8,7 +9,9 @@ int _printf(const char *format, ...)
 {
 	int sum = 0;
 	va_list ap;
-	char *p, *start;
+	char *p;
+	char *start;
+
 	params_t params = PARAMS_INIT;
 
 	va_start(ap, format);
@@ -27,6 +30,7 @@ int _printf(const char *format, ...)
 			sum += _putchar(*p);
 			continue;
 		}
+
 		start = p;
 		p++;
 		while (get_flag(p, &params))
