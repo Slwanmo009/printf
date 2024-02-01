@@ -21,6 +21,7 @@ int print_from_to(char *start, char *stop, char *except)
  * print_rev - prints string in revers
  * @ap: string
  * @params: number bytes printed
+ * Return: number bytes printed
  */
 int print_rev(va_list ap, params_t *params)
 {

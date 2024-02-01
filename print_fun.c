@@ -3,6 +3,7 @@
  * print_char - prints charaters
  * @ap: arguments pointers
  * @params: number chars printed
+ * Return: the sum of string
  */
 int print_char(va_list ap, params_t *params)
 {
@@ -25,21 +26,19 @@ int print_char(va_list ap, params_t *params)
  */
 int print_int(va_list ap, params_t *params)
 {
-        long l;
+	long l;
 
-        if (params->l_modifier)
-                l = va_arg(ap, long);
-        else if (params->h_modifier)
-                l = (short int)va_arg(ap, int);
-        else
-                l = (int)va_arg(ap, int);
-        return (print_number(convert(l, 10, 0, params), params));
+	if (params->l_modifier)
+		l = va_arg(ap, long);
+	else if (params->h_modifier)
+		l = (short int)va_arg(ap, int);
+	else
+		l = (int)va_arg(ap, int);
+	return (print_number(convert(l, 10, 0, params), params));
 }
-
-
 /**
  * print_string - print string
- * @ap; argument pointer
+ * @ap: argument pointer
  * @params: the parameter strucy
  * Return: number chars printed
  */
@@ -57,24 +56,23 @@ int print_string(va_list ap, params_t *params)
 		j = pad = params->precision;
 		if (params->minus_flag)
 		{
-
-	if (params->precision != UINT_MAX)
-	for (i = 0; i < pad; i++)
-	sum += _putchar(*str++);
-	else
-	sum += _puts(str);
-}
-while (j++ < params->width)
-	sum += _putchar(pad_char);
-if (!params->minus_flag)
-{
-	if (params->precision != UINT_MAX)
-		for (i = 0; i < pad; i++)
-		       sum += _putchar(*str);
-	else
-		sum += _puts(str);
-}
-return (sum);
+			if (params->precision != UINT_MAX)
+				for (i = 0; i < pad; i++)
+					sum += _putchar(*str++);
+			else
+				sum += _puts(str);
+		}
+		while (j++ < params->width)
+			sum += _putchar(pad_char);
+		if (!params->minus_flag)
+		{
+			if (params->precision != UINT_MAX)
+				for (i = 0; i < pad; i++)
+					sum += _putchar(*str);
+			else
+				sum += _puts(str);
+		}
+		return (sum);
 }
 /**
  * print_percent - prints string

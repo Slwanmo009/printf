@@ -38,6 +38,7 @@ char *convert(long int num, int base, int flags, params_t *params)
  * print_unsigned - prints unsigned integer number
  * @ap: argumment pointer
  * @params: bytes printed
+ * Return: bytes printed
  */
 int print_unsigned(va_list ap, params_t *params)
 {
@@ -53,9 +54,10 @@ int print_unsigned(va_list ap, params_t *params)
 	return (print_number(convert(l, 10, CONVERT_UNSIGNED, params), params));
 }
 /**
- * print_address - prints address
+ * print_address - prints address to value
  * @ap: argument pointer
- * @params: bytes printed
+ * @params: paramter struct
+ * Return: bytes printed
  */
 int print_address(va_list ap, params_t *params)
 {
@@ -66,7 +68,7 @@ int print_address(va_list ap, params_t *params)
 		return (_puts("(nill)"));
 
 	str = convert(n, 16, CONVERT_UNSIGNED | CONVERT_LOWERCASE, params);
-       *--str = 'x';
- *--str = '0';
- return (print_number(str, params));
+	*--str = 'x';
+	*--str = '0';
+	return (print_number(str, params));
 }
